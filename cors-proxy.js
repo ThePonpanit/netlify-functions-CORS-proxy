@@ -11,6 +11,9 @@ exports.handler = async function (event, context) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: "url query param is required" }),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     };
   }
 
@@ -20,6 +23,7 @@ exports.handler = async function (event, context) {
       statusCode: 200,
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(response.data),
     };
@@ -27,6 +31,9 @@ exports.handler = async function (event, context) {
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "Failed to fetch from target URL" }),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     };
   }
 };
